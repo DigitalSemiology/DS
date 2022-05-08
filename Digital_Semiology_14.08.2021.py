@@ -12514,6 +12514,7 @@ class Ictal(object):
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def save_variable():
     global ds_starter
+    copy_filename='ictal_episode_' + ds_starter[0] + '_' + ds_starter[18] +'.dat'
     filename='ictal_episode_' + ds_starter[18] +'.dat'
     output=open(filename, 'wb')  # Overwrites any existing file with the same name.
     pickle.dump(ds_starter, output)
@@ -12521,6 +12522,13 @@ def save_variable():
     pickle.dump(report, output)
     pickle.dump(software_user_dialogue, output)
     output.close()
+    output=open(copy_filename, 'wb')  # Overwrites any existing file with the same name.
+    pickle.dump(ds_starter, output)
+    pickle.dump(ictus, output)
+    pickle.dump(report, output)
+    pickle.dump(software_user_dialogue, output)
+    output.close()
+
 #----------------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------
 def save_variable_draft():
@@ -22487,6 +22495,9 @@ else:
     text_file=open('ictal_episode_' + ds_starter[18] + '.txt', "w", encoding='utf-8')
     text_file.write(report)
     text_file.close()   
+    copy_text_file=open('ictal_episode_' + ds_starter[0] + '_' + ds_starter[18] + '.txt', "w", encoding='utf-8')
+    copy_text_file.write(report)
+    copy_text_file.close()
 
 #input ("\nPress Enter to exit") 
 wx_text=nm+''', thank you for finalizing ictal episode interpretation
